@@ -42,6 +42,11 @@ namespace Project1_Pet
         void OnPointerPressed(object sender, PointerRoutedEventArgs e)
         {
 
+            this.IdleShiba.Visibility =  Windows.UI.Xaml.Visibility.Collapsed;
+            this.HappyShiba.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
+          
+
             (this.touchPoint.RenderTransform as CompositeTransform).TranslateX = e.GetCurrentPoint(this.Container).Position.X - this.touchPoint.Width / 2;
             (this.touchPoint.RenderTransform as CompositeTransform).TranslateY = e.GetCurrentPoint(this.Container).Position.Y - this.touchPoint.Height / 2;
 
@@ -55,6 +60,10 @@ namespace Project1_Pet
 
         void OnPointerReleased(object sender, PointerRoutedEventArgs e)
         {
+
+            this.IdleShiba.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            this.HappyShiba.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
             this.Container.Children.Remove(this.touchPoint);
         }
 
