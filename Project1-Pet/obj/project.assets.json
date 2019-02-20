@@ -25575,11 +25575,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\neil_\\Documents\\uni\\CPSC 581\\Project1-Pet\\Project1-Pet\\Project1-Pet.csproj",
+      "projectUniqueName": "C:\\Users\\neil_\\Documents\\uni\\CPSC 581\\CPSC581-P1-Pet\\Project1-Pet\\Project1-Pet.csproj",
       "projectName": "Project1-Pet",
-      "projectPath": "C:\\Users\\neil_\\Documents\\uni\\CPSC 581\\Project1-Pet\\Project1-Pet\\Project1-Pet.csproj",
+      "projectPath": "C:\\Users\\neil_\\Documents\\uni\\CPSC 581\\CPSC581-P1-Pet\\Project1-Pet\\Project1-Pet.csproj",
       "packagesPath": "C:\\Users\\neil_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\neil_\\Documents\\uni\\CPSC 581\\Project1-Pet\\Project1-Pet\\obj\\",
+      "outputPath": "C:\\Users\\neil_\\Documents\\uni\\CPSC 581\\CPSC581-P1-Pet\\Project1-Pet\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

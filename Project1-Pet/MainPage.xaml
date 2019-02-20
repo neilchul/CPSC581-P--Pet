@@ -7,7 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Width="432" Height="768">
 
-    <Grid Background="White">
 
-    </Grid>
+    <Canvas Name="Container">
+        <Canvas.Background>
+            <ImageBrush ImageSource="Assets/phoneBackground.png"/>
+        </Canvas.Background>
+        <Image x:Name="IdleShiba" Height="300"  VerticalAlignment="Center" HorizontalAlignment="Center" Source="Assets/shiba1.png" Canvas.Left="66" Canvas.Top="384" Width="300"/>
+        <Image x:Name="HappyShiba" Height="300"  VerticalAlignment="Center" HorizontalAlignment="Center" Source="Assets/shiba2.png" Canvas.Left="66" Canvas.Top="384" Width="300" Visibility="Collapsed"/>
+
+
+
+    </Canvas>
 </Page>
