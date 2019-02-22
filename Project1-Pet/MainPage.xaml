@@ -18,7 +18,8 @@
                 <RotateTransform Angle="0" />
             </Image.RenderTransform>
         </Image>
-
+        <Image x:Name="UnlockedShiba" Height="300" VerticalAlignment="Center" HorizontalAlignment="Center" Source="Assets/shibawaves.gif" Canvas.Left="66" Canvas.Top="384" Width="300" Visibility="Collapsed"/>
+        <TextBox x:Name="PhoneUnlockedText" Height="64" Width="331" Canvas.Left="65" Canvas.Top="309" Text="Phone Unlocked!" FontSize="36" FontFamily="Kristen ITC" Foreground="#FFE0E64E" BorderBrush="#00622C2C" Background="Transparent" Visibility="Collapsed" />
 
 
 

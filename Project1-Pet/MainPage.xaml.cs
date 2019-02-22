@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Windows.UI;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -6,12 +7,11 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 
 
-
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace Project1_Pet
 {
-
+    
 
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -20,10 +20,15 @@ namespace Project1_Pet
     {
         Ellipse touchPoint;
         SolidColorBrush Red = new SolidColorBrush(Colors.Red);
+        Int32 num_pets = 0;
+
+        public bool screenUnlock = false;
+        
 
         public MainPage()
         {
 
+            
 
             this.InitializeComponent();
 
@@ -33,8 +38,8 @@ namespace Project1_Pet
 
             this.touchPoint = new Ellipse()
             {
-                Width = 100,
-                Height = 100,
+                Width = 50,
+                Height = 50,
                 Fill = Red,
                 RenderTransform = new CompositeTransform()
             };
@@ -42,37 +47,64 @@ namespace Project1_Pet
 
         double toDegrees(double radians)
         {
-            return (180/Math.PI) * radians;
+            return (45/Math.PI) * radians;
         }
 
         void OnPointerPressed(object sender, PointerRoutedEventArgs e)
         {
-           
-            //switch face
-            this.IdleShiba.Visibility =  Windows.UI.Xaml.Visibility.Collapsed;
-            this.HappyShiba.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
-            //red dot
-            (this.touchPoint.RenderTransform as CompositeTransform).TranslateX = e.GetCurrentPoint(this.Container).Position.X - this.touchPoint.Width / 2;
-            (this.touchPoint.RenderTransform as CompositeTransform).TranslateY = e.GetCurrentPoint(this.Container).Position.Y - this.touchPoint.Height / 2;
-
-            this.Container.Children.Add(this.touchPoint);
-
-            if (!this.Container.Children.Contains(this.touchPoint))
+        
+            if (screenUnlock == false)
             {
+                //switch face
+                this.IdleShiba.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                this.HappyShiba.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
+                //red dot
+                (this.touchPoint.RenderTransform as CompositeTransform).TranslateX = e.GetCurrentPoint(this.Container).Position.X - this.touchPoint.Width / 2;
+                (this.touchPoint.RenderTransform as CompositeTransform).TranslateY = e.GetCurrentPoint(this.Container).Position.Y - this.touchPoint.Height / 2;
+
                 this.Container.Children.Add(this.touchPoint);
+
+
+                if (!this.Container.Children.Contains(this.touchPoint))
+                {
+                    this.Container.Children.Add(this.touchPoint);
+                }
             }
+            
+
+          
 
         }
 
         void OnPointerReleased(object sender, PointerRoutedEventArgs e)
         {
 
-            //switch face back
-            this.IdleShiba.Visibility = Windows.UI.Xaml.Visibility.Visible;
-            this.HappyShiba.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            if (screenUnlock == false)
+            {
+                //switch face back
+                this.IdleShiba.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                this.HappyShiba.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
-            this.Container.Children.Remove(this.touchPoint);
+                this.Container.Children.Remove(this.touchPoint);
+                num_pets++;
+            }
+            
+
+
+            //unlock phone if petted 10 times
+            
+
+            if (num_pets == 10)
+            {
+                
+                this.IdleShiba.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                this.HappyShiba.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                this.UnlockedShiba.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                this.PhoneUnlockedText.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                screenUnlock = true;
+
+            }
         }
 
         void OnPointerMoved(object sender, PointerRoutedEventArgs e)
